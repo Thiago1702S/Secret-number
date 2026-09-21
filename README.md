@@ -4,6 +4,12 @@ Projeto simples desenvolvido em **JavaScript** para praticar conceitos fundament
 
 O objetivo do jogo é descobrir um número secreto gerado aleatoriamente entre **1 e 10**.
 
+## 🚀 Jogar online
+
+O projeto está publicado no GitHub Pages e pode ser executado diretamente pelo navegador.
+
+👉 [Jogar Número Secreto](https://thiago1702s.github.io/Secret-number/)
+
 ## 🎮 Como funciona
 
 Ao iniciar o jogo, um número secreto é gerado aleatoriamente.
