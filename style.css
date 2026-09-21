@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Jogo do Número Secreto</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <script src="app.js"></script>
-
-</body>
-</html>
+* {
+    background-color: black;
+    background-image: url('./bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+}
