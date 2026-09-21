@@ -1,27 +1,82 @@
-let numeroSecreto = parseInt(Math.random() * 10) + 1;
-let tentativas = 1;
-let chute;
+let numeroSecreto;
+let tentativas;
 
-alert('Boas-vindas ao jogo do número secreto!');
+const inputChute = document.getElementById('chute');
+const botaoChutar = document.getElementById('botaoChutar');
+const botaoReiniciar = document.getElementById('botaoReiniciar');
+const mensagem = document.getElementById('mensagem');
+const textoTentativas = document.getElementById('tentativas');
 
-while (chute != numeroSecreto) {
-    chute = parseInt(prompt('Escolha um número entre 1 e 10'));
+function iniciarJogo() {
+    numeroSecreto = Math.floor(Math.random() * 10) + 1;
+    tentativas = 0;
 
-    if (chute == numeroSecreto) {
-        break;
+    mensagem.textContent = 'Faça sua primeira tentativa.';
+    textoTentativas.textContent = 'Tentativas: 0';
+
+    inputChute.value = '';
+    inputChute.disabled = false;
+    botaoChutar.disabled = false;
+
+    botaoReiniciar.classList.add('oculto');
+
+    inputChute.focus();
+}
+
+function verificarChute() {
+    const valorDigitado = inputChute.value.trim();
+
+    // Campo vazio
+    if (valorDigitado === '') {
+        mensagem.textContent = 'Digite um número entre 1 e 10.';
+        return;
     }
 
-    if (chute > numeroSecreto) {
-        alert('O número secreto é menor');
-    } else {
-        alert('O número secreto é maior');
+    const chute = Number(valorDigitado);
+
+    // Valor inválido
+    if (!Number.isInteger(chute) || chute < 1 || chute > 10) {
+        mensagem.textContent = 'Valor inválido. Digite um número inteiro entre 1 e 10.';
+        inputChute.value = '';
+        inputChute.focus();
+        return;
     }
 
     tentativas++;
+    textoTentativas.textContent = `Tentativas: ${tentativas}`;
+
+    if (chute === numeroSecreto) {
+        const palavraTentativa = tentativas === 1 ? 'tentativa' : 'tentativas';
+
+        mensagem.textContent =
+            `Você acertou! O número secreto era ${numeroSecreto}. Você precisou de ${tentativas} ${palavraTentativa}.`;
+
+        inputChute.disabled = true;
+        botaoChutar.disabled = true;
+
+        botaoReiniciar.classList.remove('oculto');
+
+        return;
+    }
+
+    if (chute > numeroSecreto) {
+        mensagem.textContent = 'O número secreto é menor.';
+    } else {
+        mensagem.textContent = 'O número secreto é maior.';
+    }
+
+    inputChute.value = '';
+    inputChute.focus();
 }
 
-let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+botaoChutar.addEventListener('click', verificarChute);
 
-alert(
-    `O número secreto era ${numeroSecreto} e você acertou em ${tentativas} ${palavraTentativa}!`
-);
+inputChute.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        verificarChute();
+    }
+});
+
+botaoReiniciar.addEventListener('click', iniciarJogo);
+
+iniciarJogo();
