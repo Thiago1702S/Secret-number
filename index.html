@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Jogo do Número Secreto</title>
 
     <link rel="stylesheet" href="style.css">
@@ -11,7 +12,72 @@
 
 <body>
 
+    <main class="game">
+
+        <img
+            src="code.png"
+            alt=""
+            class="codigo"
+        >
+
+        <section class="game__conteudo">
+
+            <p class="game__tag">JOGO DE LÓGICA</p>
+
+            <h1>
+                Descubra o
+                <span>número secreto</span>
+            </h1>
+
+            <p class="game__descricao">
+                Escolha um número entre 1 e 10.
+                A cada tentativa você receberá uma dica.
+            </p>
+
+            <div class="game__entrada">
+                <input
+                    type="number"
+                    id="chute"
+                    min="1"
+                    max="10"
+                    placeholder="Digite um número"
+                    autocomplete="off"
+                >
+
+                <button id="botaoChutar">
+                    Chutar
+                </button>
+            </div>
+
+            <p id="mensagem" class="mensagem">
+                Faça sua primeira tentativa.
+            </p>
+
+            <p id="tentativas" class="tentativas">
+                Tentativas: 0
+            </p>
+
+            <button
+                id="botaoReiniciar"
+                class="botao-reiniciar oculto"
+            >
+                Jogar novamente
+            </button>
+
+        </section>
+
+        <div class="game__visual">
+            <img
+                src="ia.png"
+                alt="Personagem futurista"
+                class="personagem"
+            >
+        </div>
+
+    </main>
+
     <script src="app.js"></script>
+
 </body>
 
 </html>
